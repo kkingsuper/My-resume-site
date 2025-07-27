@@ -1,39 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>我的简历</title>
+  <title>简历</title>
+  <link rel="stylesheet" href="pdfjs/web/viewer.css">
   <style>
     body {
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
       font-family: Arial, sans-serif;
       text-align: center;
-      padding: 20px;
     }
     iframe {
-      width: 80%;
-      height: 600px;
-      border: 1px solid #ccc;
-      margin-top: 20px;
+      width: 100%;
+      height: 90vh;
+      border: none;
+      margin: 0;
     }
-    .btn {
+    .download-btn {
       display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
-      background-color: #007acc;
-      color: white;
+      margin: 20px auto;
+      padding: 12px 24px;
+      background-color: #ffffff;
+      color: #000000;
+      border: none;
+      border-radius: 4px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
       text-decoration: none;
-      border-radius: 5px;
+      font-size: 16px;
     }
-    .btn:hover {
-      background-color: #005fa3;
+    .download-btn:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    #fallback {
+      display: none;
+      color: #c00;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-  <h1>我的简历</h1>
-  <iframe src="resume.pdf" frameborder="0"></iframe>
-  <br />
-  <a href="resume.pdf" class="btn" download>📥 下载简历</a>
+
+  <iframe
+    id="pdfFrame"
+    src="pdfjs/web/viewer.html?file=../resume.pdf"
+    onerror="showFallback()"
+  ></iframe>
+
+  <div id="fallback">PDF 加载失败，请尝试下载查看。</div>
+
+  <a href="resume.pdf" class="download-btn" download>下载简历</a>
+
+  <script>
+    // 微信/QQ 内置浏览器检测
+    if (/MicroMessenger|QQ\//i.test(navigator.userAgent)) {
+      alert("请点击右上角菜单，选择『在浏览器中打开』以查看或下载简历");
+    }
+
+    function showFallback() {
+      document.getElementById('fallback').style.display = 'block';
+    }
+  </script>
+
 </body>
 </html>
+
