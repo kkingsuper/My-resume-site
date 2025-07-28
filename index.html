@@ -3,68 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>简历</title>
-  <link rel="stylesheet" href="pdfjs/web/viewer.css">
+  <title>简历下载</title>
   <style>
     body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f9f9f9;
       margin: 0;
-      padding: 0;
-      background: #f9f9f9;
-      font-family: Arial, sans-serif;
-      text-align: center;
-    }
-    iframe {
-      width: 100%;
-      height: 90vh;
-      border: none;
-      margin: 0;
+      font-family: sans-serif;
     }
     .download-btn {
-      display: inline-block;
-      margin: 20px auto;
-      padding: 12px 24px;
-      background-color: #ffffff;
-      color: #000000;
-      border: none;
-      border-radius: 4px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-      text-decoration: none;
+      padding: 16px 32px;
+      background: white;
+      color: black;
       font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      text-decoration: none;
     }
     .download-btn:hover {
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    }
-    #fallback {
-      display: none;
-      color: #c00;
-      margin-top: 20px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
     }
   </style>
 </head>
 <body>
 
-  <iframe
-  src="pdfjs/web/viewer.html?file=../resume.pdf"
-  width="100%"
-  height="90vh"
-  frameborder="0"
-></iframe>
-
-  <div id="fallback">PDF 加载失败，请尝试下载查看。</div>
-
   <a href="resume.pdf" class="download-btn" download>下载简历</a>
-
-  <script>
-    // 微信/QQ 内置浏览器检测
-    if (/MicroMessenger|QQ\//i.test(navigator.userAgent)) {
-      alert("请点击右上角菜单，选择『在浏览器中打开』以查看或下载简历");
-    }
-
-    function showFallback() {
-      document.getElementById('fallback').style.display = 'block';
-    }
-  </script>
 
 </body>
 </html>
-
